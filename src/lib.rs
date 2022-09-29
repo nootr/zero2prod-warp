@@ -1,11 +1,9 @@
 use warp::Filter;
 
-fn get_healthz() -> &'static str {
+fn get_health_check() -> &'static str {
     ""
 }
 
-pub async fn run() {
-    let get_routes = warp::get().and(warp::path("healthz").map(get_healthz));
-
-    warp::serve(get_routes).run(([127, 0, 0, 1], 8000)).await;
+pub fn get_filter() -> impl Filter<Extract = (&'static str,), Error = warp::Rejection> + Copy {
+    warp::get().and(warp::path("healthz").map(get_health_check))
 }
