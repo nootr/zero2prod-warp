@@ -1,9 +1,15 @@
 [package]
 name = "newsletter"
 version = "0.1.0"
+authors = ["Joris Hartog <jorishartog@hotmail.com>"]
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+path = "src/main.rs"
+name = "newsletter"
 
 [dependencies]
 tokio = { version = "1.21.2", features = ["macros", "rt-multi-thread"] }
